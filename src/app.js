@@ -1,8 +1,7 @@
 const express = require('express');
+const routes = require('@app/routes');
 
 const app = express();
-
-app.use(express.json());
 
 app.get('/teste', (req, res) => {
     res
@@ -10,5 +9,7 @@ app.get('/teste', (req, res) => {
         .send({ mensagem: 'boas-vindas à API' })
     ;
 });
+
+routes(app);
 
 module.exports = app;
