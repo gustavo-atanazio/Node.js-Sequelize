@@ -1,4 +1,4 @@
-const dataSource = require('@app/models');
+const dataSource = require('@app/database/models');
 
 class Services {
     constructor(modelName) { this.model = modelName; }

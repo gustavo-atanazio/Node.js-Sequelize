@@ -11,7 +11,7 @@ class PessoaController extends Controller {
             const matriculasList = await PessoaServices.getMatriculasByEstudante(Number(estudanteID));
             return res.status(200).json(matriculasList);
         } catch (error) {
-            res.status(500).json({ message: 'Erro inesperado no servidor.', error: error.message });
+            return res.status(500).json({ message: 'Erro inesperado no servidor.', error: error.message });
         }
     }
 }

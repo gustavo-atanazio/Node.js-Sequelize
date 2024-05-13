@@ -6,7 +6,7 @@ class Controller {
             const data = await this.entityService.getAllRegisters();
             return res.status(200).json(data);
         } catch (error) {
-            res.status(500).json({ message: 'Erro inesperado no servidor.', error: error.message });
+            return res.status(500).json({ message: 'Erro inesperado no servidor.', error: error.message });
         }
     }
 
@@ -17,7 +17,7 @@ class Controller {
             const umRegistro = await this.entityService.getOneRegisterById(Number(id));
             return res.status(200).json(umRegistro);
         } catch (error) {
-            res.status(500).json({ message: 'Erro inesperado no servidor.', error: error.message });
+            return res.status(500).json({ message: 'Erro inesperado no servidor.', error: error.message });
         }
     }
 
@@ -28,7 +28,7 @@ class Controller {
             const novoRegistroCriado = await this.entityService.createRegister(dadosParaCriacao);
             return res.status(200).json(novoRegistroCriado);
         } catch (error) {
-            res.status(500).json({ message: 'Erro inesperado no servidor.', error: error.message });
+            return res.status(500).json({ message: 'Erro inesperado no servidor.', error: error.message });
         }
     }
 
@@ -45,8 +45,7 @@ class Controller {
 
             return res.status(200).json({ message: 'Registro atualizado.' });
         } catch (error) {
-            console.log('Erro em [Controller] - update()');
-            res.status(500).json({ message: 'Erro interno do servidor.', error: error.message });
+            return res.status(500).json({ message: 'Erro interno do servidor.', error: error.message });
         }
     }
 
