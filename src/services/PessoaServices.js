@@ -12,6 +12,15 @@ class PessoaServices extends Services {
             return error;
         }
     }
+
+    async getAllPessoasScope() {
+        try {
+            const pessoasList = await super.getRegistersByScope('allRegisters');
+            return pessoasList;
+        } catch (error) {
+            return error;
+        }
+    }
 }
 
 module.exports = PessoaServices;

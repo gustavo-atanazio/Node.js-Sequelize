@@ -8,6 +8,7 @@ const pessoaController = new PessoaController();
 const matriculaController = new MatriculaController();
 
 router.get('/pessoas', (req, res) => pessoaController.getAll(req, res));
+router.get('/pessoas/todos', (req, res) => pessoaController.getAllPessoas(req, res));
 router.get('/pessoas/:id', (req, res) => pessoaController.getOneById(req, res));
 router.post('/pessoas', (req, res) => pessoaController.createNew(req, res));
 router.put('/pessoas/:id', (req, res) => pessoaController.update(req, res));
