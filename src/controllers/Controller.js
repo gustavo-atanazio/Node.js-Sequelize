@@ -1,3 +1,5 @@
+const converteID = require('@app/utils/String-helper.js');
+
 class Controller {
     constructor(entityService) { this.entityService = entityService; }
 
@@ -21,6 +23,18 @@ class Controller {
         }
     }
 
+    async getOne(req, res) {
+        const { ...params } = req.params;
+        const where = converteID(params);
+
+        try {
+            const umRegistro = await this.entityService.getOneRegister(where);
+            return res.status(200).json(umRegistro);
+        } catch (error) {
+            return res.status(500).json({ message: 'Erro inesperado no servidor.', error: error.message });
+        }
+    }
+
     async createNew(req, res) {
         const dadosParaCriacao = req.body;
 
@@ -33,11 +47,12 @@ class Controller {
     }
 
     async update(req, res) {
-        const { id } = req.params;
+        const { ...params } = req.params;
         const updatedData = req.body;
+        const where = converteID(params);
 
         try {
-            const wasUpdated = await this.entityService.updateRegister(updatedData, Number(id));
+            const wasUpdated = await this.entityService.updateRegister(updatedData, where);
 
             if (!wasUpdated) {
                 return res.status(400).json({ message: 'Registro não foi atualizado.' });

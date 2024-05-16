@@ -3,7 +3,17 @@ const Services = require('./Services.js');
 class PessoaServices extends Services {
     constructor() { super('Pessoa'); }
 
-    async getMatriculasByEstudante(id) {
+    async getAllMatriculasByEstudante(id) {
+        try {
+            const estudante = await super.getOneRegisterById(id);
+            const matriculasList = await estudante.getTodasAsMatriculas();
+            return matriculasList;
+        } catch (error) {
+            return error;
+        }
+    }
+
+    async getMatriculasAtivasByEstudante(id) {
         try {
             const estudante = await super.getOneRegisterById(id);
             const matriculasList = await estudante.getAulasMatriculadas();

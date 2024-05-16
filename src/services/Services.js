@@ -15,12 +15,16 @@ class Services {
         return dataSource[this.model].findByPk(id);
     }
 
+    async getOneRegister(where) {
+        return dataSource[this.model].findOne({ where: { ...where } });
+    }
+
     async createRegister(registerData) {
         return dataSource[this.model].create(registerData);
     }
 
-    async updateRegister(updatedData, id) {
-        const listOfUpdatedRegisters = dataSource[this.model].update(updatedData, { where: { id } });
+    async updateRegister(updatedData, where) {
+        const listOfUpdatedRegisters = dataSource[this.model].update(updatedData, { where: { ...where } });
 
         if (listOfUpdatedRegisters[0] === 0) return false;
         return true;

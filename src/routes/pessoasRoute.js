@@ -14,7 +14,11 @@ router.post('/pessoas', (req, res) => pessoaController.createNew(req, res));
 router.put('/pessoas/:id', (req, res) => pessoaController.update(req, res));
 router.delete('/pessoas/:id', (req, res) => pessoaController.delete(req, res));
 
-router.get('/pessoas/:estudanteID/matriculas', (req, res) => pessoaController.getMatriculas(req, res));
-router.post('/pessoas/:estudanteID/matriculas', (req, res) => matriculaController.createNew(req, res));
+router.get('/pessoas/:estudante_id/matriculas', (req, res) => pessoaController.getMatriculasAtivas(req, res));
+router.get('/pessoas/:estudante_id/matriculas/todos', (req, res) => pessoaController.getAllMatriculas(req, res));
+router.get('/pessoas/:estudante_id/matriculas/:id', (req, res) => matriculaController.getOne(req, res));
+router.post('/pessoas/:estudante_id/matriculas', (req, res) => matriculaController.createNew(req, res));
+router.put('/pessoas/:estudante_id/matriculas/:id', (req, res) => matriculaController.update(req, res));
+router.delete('/pessoas/:estudante_id/matriculas/:id', (req, res) => matriculaController.delete(req, res));
 
 module.exports = router;
