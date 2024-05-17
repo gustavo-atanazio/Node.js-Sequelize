@@ -16,6 +16,8 @@ router.delete('/pessoas/:id', (req, res) => pessoaController.delete(req, res));
 
 router.get('/pessoas/:estudante_id/matriculas', (req, res) => pessoaController.getMatriculasAtivas(req, res));
 router.get('/pessoas/:estudante_id/matriculas/todos', (req, res) => pessoaController.getAllMatriculas(req, res));
+router.get('/pessoas/:estudante_id/matriculas/confirmadas', (req, res) => matriculaController.getMatriculasByEstudante(req, res));
+router.get('/pessoas/matriculas/lotadas', (req, res) => matriculaController.getCursosLotados(req, res));
 router.get('/pessoas/:estudante_id/matriculas/:id', (req, res) => matriculaController.getOne(req, res));
 router.post('/pessoas/:estudante_id/matriculas', (req, res) => matriculaController.createNew(req, res));
 router.put('/pessoas/:estudante_id/matriculas/:id', (req, res) => matriculaController.update(req, res));
