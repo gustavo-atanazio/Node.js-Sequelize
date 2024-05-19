@@ -27,8 +27,11 @@ class Services {
         return dataSource[this.model].create(registerData);
     }
 
-    async updateRegister(updatedData, where) {
-        const listOfUpdatedRegisters = dataSource[this.model].update(updatedData, { where: { ...where } });
+    async updateRegister(updatedData, where, transaction = {}) {
+        const listOfUpdatedRegisters = dataSource[this.model].update(updatedData, {
+            where: { ...where },
+            transaction
+        });
 
         if (listOfUpdatedRegisters[0] === 0) return false;
         return true;
